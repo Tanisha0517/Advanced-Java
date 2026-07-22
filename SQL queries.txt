@@ -1,3 +1,5 @@
+CLASS - 1
+
 Enter password: ****
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 35
@@ -281,3 +283,446 @@ mysql> select * from employee;
 +-----+----------------+---------------+--------+
 15 rows in set (0.00 sec)
 
+=============================================================================================================
+
+CLASS - 2
+
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 41
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| department         |
+| information_schema |
+| marksheet          |
+| mysql              |
+| p04                |
+| performance_schema |
+| rays               |
+| school             |
+| sys                |
+| tanisha            |
++--------------------+
+10 rows in set (0.11 sec)
+
+mysql> use tanisha;
+Database changed
+mysql> select * from employee;
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 101 | Aarav Sharma   | TCS           |  35000 |
+| 102 | Priya Verma    | Infosys       |  42000 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |
+| 104 | Sneha Patel    | Accenture     |  50000 |
+| 105 | Shyam          | Capgemini     |  45000 |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
+| 111 | Aditya Jain    | Microsoft     |  85000 |
+| 112 | Simran Kaur    | Google        |  95000 |
+| 113 | Mohit Saxena   | Amazon        |  90000 |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |
++-----+----------------+---------------+--------+
+15 rows in set (0.02 sec)
+
+mysql> select * from employee where salary > 50000 and company = 'TCS';
+Empty set (0.01 sec)
+
+mysql> select * from employee where salary > 50000;
++-----+--------------+-----------+--------+
+| id  | name         | company   | salary |
++-----+--------------+-----------+--------+
+| 108 | Neha Joshi   | IBM       |  55000 |
+| 110 | Pooja Sharma | Oracle    |  60000 |
+| 111 | Aditya Jain  | Microsoft |  85000 |
+| 112 | Simran Kaur  | Google    |  95000 |
+| 113 | Mohit Saxena | Amazon    |  90000 |
+| 114 | Riya Agrawal | Deloitte  |  52000 |
+| 115 | Riya Agrawal | Deloitte  |  52000 |
++-----+--------------+-----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee order by salary asc;
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 101 | Aarav Sharma   | TCS           |  35000 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 102 | Priya Verma    | Infosys       |  42000 |
+| 105 | Shyam          | Capgemini     |  45000 |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 104 | Sneha Patel    | Accenture     |  50000 |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
+| 111 | Aditya Jain    | Microsoft     |  85000 |
+| 113 | Mohit Saxena   | Amazon        |  90000 |
+| 112 | Simran Kaur    | Google        |  95000 |
++-----+----------------+---------------+--------+
+15 rows in set (0.01 sec)
+
+mysql> select * from employee order by salary dsc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dsc' at line 1
+mysql> select * from employee order by salary desc;
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 112 | Simran Kaur    | Google        |  95000 |
+| 113 | Mohit Saxena   | Amazon        |  90000 |
+| 111 | Aditya Jain    | Microsoft     |  85000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |
+| 104 | Sneha Patel    | Accenture     |  50000 |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 105 | Shyam          | Capgemini     |  45000 |
+| 102 | Priya Verma    | Infosys       |  42000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |
+| 101 | Aarav Sharma   | TCS           |  35000 |
++-----+----------------+---------------+--------+
+15 rows in set (0.00 sec)
+
+mysql> select * from employee order by salary asc limit 0,1;
++-----+--------------+---------+--------+
+| id  | name         | company | salary |
++-----+--------------+---------+--------+
+| 101 | Aarav Sharma | TCS     |  35000 |
++-----+--------------+---------+--------+
+1 row in set (0.01 sec)
+
+mysql> select * from employee order by salary asc limit 1,1;
++-----+-------------+---------+--------+
+| id  | name        | company | salary |
++-----+-------------+---------+--------+
+| 103 | Rohan Gupta | Wipro   |  38000 |
++-----+-------------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee order by salary asc limit 2,1;
++-----+-------------+---------+--------+
+| id  | name        | company | salary |
++-----+-------------+---------+--------+
+| 107 | Rahul Yadav | HCL     |  39000 |
++-----+-------------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee order by salary desc;
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 112 | Simran Kaur    | Google        |  95000 |
+| 113 | Mohit Saxena   | Amazon        |  90000 |
+| 111 | Aditya Jain    | Microsoft     |  85000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |
+| 104 | Sneha Patel    | Accenture     |  50000 |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 105 | Shyam          | Capgemini     |  45000 |
+| 102 | Priya Verma    | Infosys       |  42000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |
+| 101 | Aarav Sharma   | TCS           |  35000 |
++-----+----------------+---------------+--------+
+15 rows in set (0.00 sec)
+
+mysql> select * from employee order by salary desc limit 0,1;
++-----+-------------+---------+--------+
+| id  | name        | company | salary |
++-----+-------------+---------+--------+
+| 112 | Simran Kaur | Google  |  95000 |
++-----+-------------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee order by salary desc limit 1,1;
++-----+--------------+---------+--------+
+| id  | name         | company | salary |
++-----+--------------+---------+--------+
+| 113 | Mohit Saxena | Amazon  |  90000 |
++-----+--------------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee limit 0,5;
++-----+--------------+-----------+--------+
+| id  | name         | company   | salary |
++-----+--------------+-----------+--------+
+| 101 | Aarav Sharma | TCS       |  35000 |
+| 102 | Priya Verma  | Infosys   |  42000 |
+| 103 | Rohan Gupta  | Wipro     |  38000 |
+| 104 | Sneha Patel  | Accenture |  50000 |
+| 105 | Shyam        | Capgemini |  45000 |
++-----+--------------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee limit 5,5;
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
++-----+----------------+---------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee limit 10,5;
++-----+--------------+-----------+--------+
+| id  | name         | company   | salary |
++-----+--------------+-----------+--------+
+| 111 | Aditya Jain  | Microsoft |  85000 |
+| 112 | Simran Kaur  | Google    |  95000 |
+| 113 | Mohit Saxena | Amazon    |  90000 |
+| 114 | Riya Agrawal | Deloitte  |  52000 |
+| 115 | Riya Agrawal | Deloitte  |  52000 |
++-----+--------------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee limit 5,5;
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
++-----+----------------+---------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee limit 0,5;
++-----+--------------+-----------+--------+
+| id  | name         | company   | salary |
++-----+--------------+-----------+--------+
+| 101 | Aarav Sharma | TCS       |  35000 |
+| 102 | Priya Verma  | Infosys   |  42000 |
+| 103 | Rohan Gupta  | Wipro     |  38000 |
+| 104 | Sneha Patel  | Accenture |  50000 |
+| 105 | Shyam        | Capgemini |  45000 |
++-----+--------------+-----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee where name like 'a%';
++-----+--------------+-----------+--------+
+| id  | name         | company   | salary |
++-----+--------------+-----------+--------+
+| 101 | Aarav Sharma | TCS       |  35000 |
+| 106 | Anjali Mehta | Cognizant |  47000 |
+| 111 | Aditya Jain  | Microsoft |  85000 |
++-----+--------------+-----------+--------+
+3 rows in set (0.01 sec)
+
+mysql> select * from employee where name like '%a';
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 101 | Aarav Sharma   | TCS           |  35000 |
+| 102 | Priya Verma    | Infosys       |  42000 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
+| 113 | Mohit Saxena   | Amazon        |  90000 |
++-----+----------------+---------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee where name like '%a%';
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 101 | Aarav Sharma   | TCS           |  35000 |
+| 102 | Priya Verma    | Infosys       |  42000 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |
+| 104 | Sneha Patel    | Accenture     |  50000 |
+| 105 | Shyam          | Capgemini     |  45000 |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
+| 111 | Aditya Jain    | Microsoft     |  85000 |
+| 112 | Simran Kaur    | Google        |  95000 |
+| 113 | Mohit Saxena   | Amazon        |  90000 |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |
++-----+----------------+---------------+--------+
+15 rows in set (0.00 sec)
+
+mysql> select * from employee where name like '%a%';
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 101 | Aarav Sharma   | TCS           |  35000 |
+| 102 | Priya Verma    | Infosys       |  42000 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |
+| 104 | Sneha Patel    | Accenture     |  50000 |
+| 105 | Shyam          | Capgemini     |  45000 |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
+| 111 | Aditya Jain    | Microsoft     |  85000 |
+| 112 | Simran Kaur    | Google        |  95000 |
+| 113 | Mohit Saxena   | Amazon        |  90000 |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |
++-----+----------------+---------------+--------+
+15 rows in set (0.00 sec)
+
+mysql> select * from employee where name like '%y%';
++-----+--------------+-----------+--------+
+| id  | name         | company   | salary |
++-----+--------------+-----------+--------+
+| 102 | Priya Verma  | Infosys   |  42000 |
+| 105 | Shyam        | Capgemini |  45000 |
+| 107 | Rahul Yadav  | HCL       |  39000 |
+| 111 | Aditya Jain  | Microsoft |  85000 |
+| 114 | Riya Agrawal | Deloitte  |  52000 |
+| 115 | Riya Agrawal | Deloitte  |  52000 |
++-----+--------------+-----------+--------+
+6 rows in set (0.00 sec)
+
+
+
+-------------Aggregate functions-----------------------
+mysql> select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+|       95000 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> select min(salary) from employee;
++-------------+
+| min(salary) |
++-------------+
+|       35000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select sum(salary) from employee;
++-------------+
+| sum(salary) |
++-------------+
+|      826000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(salary) from employee;
++---------------+
+| count(salary) |
++---------------+
+|            15 |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> select avg(salary) from employee;
++-------------+
+| avg(salary) |
++-------------+
+|  55066.6667 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(company) from employee;
++----------------+
+| count(company) |
++----------------+
+|             15 |
++----------------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+----------------group by -----------------------------
+mysql> select company, count(company) from employee group by company;
++---------------+----------------+
+| company       | count(company) |
++---------------+----------------+
+| TCS           |              1 |
+| Infosys       |              1 |
+| Wipro         |              1 |
+| Accenture     |              1 |
+| Capgemini     |              1 |
+| Cognizant     |              1 |
+| HCL           |              1 |
+| IBM           |              1 |
+| Tech Mahindra |              1 |
+| Oracle        |              1 |
+| Microsoft     |              1 |
+| Google        |              1 |
+| Amazon        |              1 |
+| Deloitte      |              2 |
++---------------+----------------+
+14 rows in set (0.01 sec)
+
+mysql> select salary, count(salary) from employee group by salary;
++--------+---------------+
+| salary | count(salary) |
++--------+---------------+
+|  35000 |             1 |
+|  42000 |             1 |
+|  38000 |             1 |
+|  50000 |             1 |
+|  45000 |             1 |
+|  47000 |             1 |
+|  39000 |             1 |
+|  55000 |             1 |
+|  41000 |             1 |
+|  60000 |             1 |
+|  85000 |             1 |
+|  95000 |             1 |
+|  90000 |             1 |
+|  52000 |             2 |
++--------+---------------+
+14 rows in set (0.00 sec)
+
+mysql> select salary, sum(salary) from employee group by salary;
++--------+-------------+
+| salary | sum(salary) |
++--------+-------------+
+|  35000 |       35000 |
+|  42000 |       42000 |
+|  38000 |       38000 |
+|  50000 |       50000 |
+|  45000 |       45000 |
+|  47000 |       47000 |
+|  39000 |       39000 |
+|  55000 |       55000 |
+|  41000 |       41000 |
+|  60000 |       60000 |
+|  85000 |       85000 |
+|  95000 |       95000 |
+|  90000 |       90000 |
+|  52000 |      104000 |
++--------+-------------+
+14 rows in set (0.00 sec)

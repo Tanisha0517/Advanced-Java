@@ -1,0 +1,94 @@
+mysql> create table emi(ID int primary key, Name varchar(45), Amount int, EMI_Date date);
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> INSERT INTO emi (ID, Name, Amount, EMI_Date) VALUES
+    -> (1, 'Amit',    15000, '24-01-05'),
+    -> (2, 'Priya',   20000, '24-01-10'),
+    -> (3, 'Rahul',   15000, '24-02-15'),
+    -> (4, 'Sneha',   18000, '24-02-20'),
+    -> (5, 'Amit',    22000, '24-03-05'),
+    -> (6, 'Neha',    20000, '24-03-18'),
+    -> (7, 'Rahul',   15000, '24-04-10'),
+    -> (8, 'Karan',   25000, '24-04-25'),
+    -> (9, 'Priya',   20000, '24-05-12'),
+    -> (10,'Sneha',   18000, '24-06-01');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> drop table emi;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table emi(ID int primary key, Name varchar(45), Amount int, EMI_Date date unique);
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> INSERT INTO emi (ID, Name, Amount, EMI_Date) VALUES
+    -> (1, 'Amit',    15000, '24-01-05'),
+    -> (2, 'Priya',   20000, '24-01-10'),
+    -> (3, 'Rahul',   15000, '24-02-15'),
+    -> (4, 'Sneha',   18000, '24-02-20'),
+    -> (5, 'Amit',    22000, '24-03-05'),
+    -> (6, 'Neha',    20000, '24-03-18'),
+    -> (7, 'Rahul',   15000, '24-04-10'),
+    -> (8, 'Karan',   25000, '24-04-25'),
+    -> (9, 'Priya',   20000, '24-05-12'),
+    -> (10,'Sneha',   18000, '24-06-01');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from emi;
++----+-------+--------+------------+
+| ID | Name  | Amount | EMI_Date   |
++----+-------+--------+------------+
+|  1 | Amit  |  15000 | 2024-01-05 |
+|  2 | Priya |  20000 | 2024-01-10 |
+|  3 | Rahul |  15000 | 2024-02-15 |
+|  4 | Sneha |  18000 | 2024-02-20 |
+|  5 | Amit  |  22000 | 2024-03-05 |
+|  6 | Neha  |  20000 | 2024-03-18 |
+|  7 | Rahul |  15000 | 2024-04-10 |
+|  8 | Karan |  25000 | 2024-04-25 |
+|  9 | Priya |  20000 | 2024-05-12 |
+| 10 | Sneha |  18000 | 2024-06-01 |
++----+-------+--------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select name , count(name) from emi group by name;
++-------+-------------+
+| name  | count(name) |
++-------+-------------+
+| Amit  |           2 |
+| Priya |           2 |
+| Rahul |           2 |
+| Sneha |           2 |
+| Neha  |           1 |
+| Karan |           1 |
++-------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> select name , count(name), sum(amount) from emi group by name;
++-------+-------------+-------------+
+| name  | count(name) | sum(amount) |
++-------+-------------+-------------+
+| Amit  |           2 |       37000 |
+| Priya |           2 |       40000 |
+| Rahul |           2 |       30000 |
+| Sneha |           2 |       36000 |
+| Neha  |           1 |       20000 |
+| Karan |           1 |       25000 |
++-------+-------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> select name , count(name), sum(amount) as Total_EMI from emi group by name;
++-------+-------------+-----------+
+| name  | count(name) | Total_EMI |
++-------+-------------+-----------+
+| Amit  |           2 |     37000 |
+| Priya |           2 |     40000 |
+| Rahul |           2 |     30000 |
+| Sneha |           2 |     36000 |
+| Neha  |           1 |     20000 |
+| Karan |           1 |     25000 |
++-------+-------------+-----------+
+6 rows in set (0.00 sec)
+
+mysql>
