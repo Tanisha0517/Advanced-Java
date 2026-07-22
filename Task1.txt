@@ -1,0 +1,87 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 36
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| marksheet          |
+| mysql              |
+| p04                |
+| performance_schema |
+| rays               |
+| school             |
+| sys                |
+| tanisha            |
++--------------------+
+9 rows in set (0.04 sec)
+
+mysql> create database Department;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| department         |
+| information_schema |
+| marksheet          |
+| mysql              |
+| p04                |
+| performance_schema |
+| rays               |
+| school             |
+| sys                |
+| tanisha            |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> use Department;
+Database changed
+mysql> create table Department_Module(Department_ID int Primary Key, Department_Name varchar(60), HOD_Name varchar(60), Total_Faculty int, Location varchar(60) );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> INSERT INTO Department_Module
+    -> (Department_ID, Department_Name, HOD_Name, Total_Faculty, Location)
+    -> VALUES
+    -> (101, 'Computer Science', 'Dr. Amit Sharma', 45, 'Block A'),
+    -> (102, 'Information Technology', 'Dr. Neha Verma', 38, 'Block B'),
+    -> (103, 'Mechanical Engineering', 'Dr. Rajesh Singh', 40, 'Block C'),
+    -> (104, 'Civil Engineering', 'Dr. Priya Gupta', 35, 'Block D'),
+    -> (105, 'Electrical Engineering', 'Dr. Anil Kumar', 42, 'Block E'),
+    -> (106, 'Electronics & Communication', 'Dr. Pooja Mishra', 37, 'Block F'),
+    -> (107, 'Artificial Intelligence', 'Dr. Rohit Jain', 30, 'Block G'),
+    -> (108, 'Data Science', 'Dr. Sneha Patel', 28, 'Block H'),
+    -> (109, 'Business Administration', 'Dr. Vivek Mehta', 25, 'Block I'),
+    -> (110, 'Mathematics', 'Dr. Kavita Joshi', 20, 'Block J');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> select * from Department_Module;
++---------------+-----------------------------+------------------+---------------+----------+
+| Department_ID | Department_Name             | HOD_Name         | Total_Faculty | Location |
++---------------+-----------------------------+------------------+---------------+----------+
+|           101 | Computer Science            | Dr. Amit Sharma  |            45 | Block A  |
+|           102 | Information Technology      | Dr. Neha Verma   |            38 | Block B  |
+|           103 | Mechanical Engineering      | Dr. Rajesh Singh |            40 | Block C  |
+|           104 | Civil Engineering           | Dr. Priya Gupta  |            35 | Block D  |
+|           105 | Electrical Engineering      | Dr. Anil Kumar   |            42 | Block E  |
+|           106 | Electronics & Communication | Dr. Pooja Mishra |            37 | Block F  |
+|           107 | Artificial Intelligence     | Dr. Rohit Jain   |            30 | Block G  |
+|           108 | Data Science                | Dr. Sneha Patel  |            28 | Block H  |
+|           109 | Business Administration     | Dr. Vivek Mehta  |            25 | Block I  |
+|           110 | Mathematics                 | Dr. Kavita Joshi |            20 | Block J  |
++---------------+-----------------------------+------------------+---------------+----------+
+10 rows in set (0.00 sec)
+
