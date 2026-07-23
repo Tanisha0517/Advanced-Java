@@ -726,3 +726,451 @@ mysql> select salary, sum(salary) from employee group by salary;
 |  52000 |      104000 |
 +--------+-------------+
 14 rows in set (0.00 sec)
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+CLASS - 3
+
+alter , foreign key 
+
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 44
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| department         |
+| information_schema |
+| marksheet          |
+| mysql              |
+| p04                |
+| performance_schema |
+| rays               |
+| school             |
+| sys                |
+| tanisha            |
++--------------------+
+10 rows in set (0.10 sec)
+
+mysql> use tanisha;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_tanisha |
++-------------------+
+| emi               |
+| employee          |
++-------------------+
+2 rows in set (0.04 sec)
+
+mysql> select * from employee;
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 101 | Aarav Sharma   | TCS           |  35000 |
+| 102 | Priya Verma    | Infosys       |  42000 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |
+| 104 | Sneha Patel    | Accenture     |  50000 |
+| 105 | Shyam          | Capgemini     |  45000 |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
+| 111 | Aditya Jain    | Microsoft     |  85000 |
+| 112 | Simran Kaur    | Google        |  95000 |
+| 113 | Mohit Saxena   | Amazon        |  90000 |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |
++-----+----------------+---------------+--------+
+15 rows in set (0.02 sec)
+
+mysql> create table department(ID int primary key, Department_Name varchar(50));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> insert into department values(1, 'Admin'),(2,'Developer'),(3,'Manager'),(4,'HR');
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from department;
++----+-----------------+
+| ID | Department_Name |
++----+-----------------+
+|  1 | Admin           |
+|  2 | Developer       |
+|  3 | Manager         |
+|  4 | HR              |
++----+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-----+----------------+---------------+--------+
+| id  | name           | company       | salary |
++-----+----------------+---------------+--------+
+| 101 | Aarav Sharma   | TCS           |  35000 |
+| 102 | Priya Verma    | Infosys       |  42000 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |
+| 104 | Sneha Patel    | Accenture     |  50000 |
+| 105 | Shyam          | Capgemini     |  45000 |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |
+| 107 | Rahul Yadav    | HCL           |  39000 |
+| 108 | Neha Joshi     | IBM           |  55000 |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |
+| 110 | Pooja Sharma   | Oracle        |  60000 |
+| 111 | Aditya Jain    | Microsoft     |  85000 |
+| 112 | Simran Kaur    | Google        |  95000 |
+| 113 | Mohit Saxena   | Amazon        |  90000 |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |
++-----+----------------+---------------+--------+
+15 rows in set (0.00 sec)
+
+mysql> select * from department;
++----+-----------------+
+| ID | Department_Name |
++----+-----------------+
+|  1 | Admin           |
+|  2 | Developer       |
+|  3 | Manager         |
+|  4 | HR              |
++----+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee add Dept_Id int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select*from employee;
++-----+----------------+---------------+--------+---------+
+| id  | name           | company       | salary | Dept_Id |
++-----+----------------+---------------+--------+---------+
+| 101 | Aarav Sharma   | TCS           |  35000 |    NULL |
+| 102 | Priya Verma    | Infosys       |  42000 |    NULL |
+| 103 | Rohan Gupta    | Wipro         |  38000 |    NULL |
+| 104 | Sneha Patel    | Accenture     |  50000 |    NULL |
+| 105 | Shyam          | Capgemini     |  45000 |    NULL |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |    NULL |
+| 107 | Rahul Yadav    | HCL           |  39000 |    NULL |
+| 108 | Neha Joshi     | IBM           |  55000 |    NULL |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |    NULL |
+| 110 | Pooja Sharma   | Oracle        |  60000 |    NULL |
+| 111 | Aditya Jain    | Microsoft     |  85000 |    NULL |
+| 112 | Simran Kaur    | Google        |  95000 |    NULL |
+| 113 | Mohit Saxena   | Amazon        |  90000 |    NULL |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
++-----+----------------+---------------+--------+---------+
+15 rows in set (0.00 sec)
+
+mysql> select * from department;
++----+-----------------+
+| ID | Department_Name |
++----+-----------------+
+|  1 | Admin           |
+|  2 | Developer       |
+|  3 | Manager         |
+|  4 | HR              |
++----+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee add foreign key employee(Dept_Id) references department(Id);
+Query OK, 15 rows affected (0.13 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> select*from employee;
++-----+----------------+---------------+--------+---------+
+| id  | name           | company       | salary | Dept_Id |
++-----+----------------+---------------+--------+---------+
+| 101 | Aarav Sharma   | TCS           |  35000 |    NULL |
+| 102 | Priya Verma    | Infosys       |  42000 |    NULL |
+| 103 | Rohan Gupta    | Wipro         |  38000 |    NULL |
+| 104 | Sneha Patel    | Accenture     |  50000 |    NULL |
+| 105 | Shyam          | Capgemini     |  45000 |    NULL |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |    NULL |
+| 107 | Rahul Yadav    | HCL           |  39000 |    NULL |
+| 108 | Neha Joshi     | IBM           |  55000 |    NULL |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |    NULL |
+| 110 | Pooja Sharma   | Oracle        |  60000 |    NULL |
+| 111 | Aditya Jain    | Microsoft     |  85000 |    NULL |
+| 112 | Simran Kaur    | Google        |  95000 |    NULL |
+| 113 | Mohit Saxena   | Amazon        |  90000 |    NULL |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
++-----+----------------+---------------+--------+---------+
+15 rows in set (0.00 sec)
+
+mysql> select * from department;
++----+-----------------+
+| ID | Department_Name |
++----+-----------------+
+|  1 | Admin           |
+|  2 | Developer       |
+|  3 | Manager         |
+|  4 | HR              |
++----+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> update employee set dept_id = 2 where id = 1;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select*from employee;
++-----+----------------+---------------+--------+---------+
+| id  | name           | company       | salary | Dept_Id |
++-----+----------------+---------------+--------+---------+
+| 101 | Aarav Sharma   | TCS           |  35000 |    NULL |
+| 102 | Priya Verma    | Infosys       |  42000 |    NULL |
+| 103 | Rohan Gupta    | Wipro         |  38000 |    NULL |
+| 104 | Sneha Patel    | Accenture     |  50000 |    NULL |
+| 105 | Shyam          | Capgemini     |  45000 |    NULL |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |    NULL |
+| 107 | Rahul Yadav    | HCL           |  39000 |    NULL |
+| 108 | Neha Joshi     | IBM           |  55000 |    NULL |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |    NULL |
+| 110 | Pooja Sharma   | Oracle        |  60000 |    NULL |
+| 111 | Aditya Jain    | Microsoft     |  85000 |    NULL |
+| 112 | Simran Kaur    | Google        |  95000 |    NULL |
+| 113 | Mohit Saxena   | Amazon        |  90000 |    NULL |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
++-----+----------------+---------------+--------+---------+
+15 rows in set (0.00 sec)
+
+mysql> select * from department;
++----+-----------------+
+| ID | Department_Name |
++----+-----------------+
+|  1 | Admin           |
+|  2 | Developer       |
+|  3 | Manager         |
+|  4 | HR              |
++----+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> update employee set dept_id = 2 where id = 101;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from employee;
++-----+----------------+---------------+--------+---------+
+| id  | name           | company       | salary | Dept_Id |
++-----+----------------+---------------+--------+---------+
+| 101 | Aarav Sharma   | TCS           |  35000 |       2 |
+| 102 | Priya Verma    | Infosys       |  42000 |    NULL |
+| 103 | Rohan Gupta    | Wipro         |  38000 |    NULL |
+| 104 | Sneha Patel    | Accenture     |  50000 |    NULL |
+| 105 | Shyam          | Capgemini     |  45000 |    NULL |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |    NULL |
+| 107 | Rahul Yadav    | HCL           |  39000 |    NULL |
+| 108 | Neha Joshi     | IBM           |  55000 |    NULL |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |    NULL |
+| 110 | Pooja Sharma   | Oracle        |  60000 |    NULL |
+| 111 | Aditya Jain    | Microsoft     |  85000 |    NULL |
+| 112 | Simran Kaur    | Google        |  95000 |    NULL |
+| 113 | Mohit Saxena   | Amazon        |  90000 |    NULL |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
++-----+----------------+---------------+--------+---------+
+15 rows in set (0.00 sec)
+
+mysql> select * from department;
++----+-----------------+
+| ID | Department_Name |
++----+-----------------+
+|  1 | Admin           |
+|  2 | Developer       |
+|  3 | Manager         |
+|  4 | HR              |
++----+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> update employee set dept_id = 4 where id = 102;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from employee;
++-----+----------------+---------------+--------+---------+
+| id  | name           | company       | salary | Dept_Id |
++-----+----------------+---------------+--------+---------+
+| 101 | Aarav Sharma   | TCS           |  35000 |       2 |
+| 102 | Priya Verma    | Infosys       |  42000 |       4 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |    NULL |
+| 104 | Sneha Patel    | Accenture     |  50000 |    NULL |
+| 105 | Shyam          | Capgemini     |  45000 |    NULL |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |    NULL |
+| 107 | Rahul Yadav    | HCL           |  39000 |    NULL |
+| 108 | Neha Joshi     | IBM           |  55000 |    NULL |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |    NULL |
+| 110 | Pooja Sharma   | Oracle        |  60000 |    NULL |
+| 111 | Aditya Jain    | Microsoft     |  85000 |    NULL |
+| 112 | Simran Kaur    | Google        |  95000 |    NULL |
+| 113 | Mohit Saxena   | Amazon        |  90000 |    NULL |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
++-----+----------------+---------------+--------+---------+
+15 rows in set (0.00 sec)
+
+mysql> select * from department;
++----+-----------------+
+| ID | Department_Name |
++----+-----------------+
+|  1 | Admin           |
+|  2 | Developer       |
+|  3 | Manager         |
+|  4 | HR              |
++----+-----------------+
+4 rows in set (0.00 sec)
+
+
+
+-------------------------------------------------------------------
+
+JOINS
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| department         |
+| information_schema |
+| marksheet          |
+| mysql              |
+| p04                |
+| performance_schema |
+| rays               |
+| school             |
+| sys                |
+| tanisha            |
++--------------------+
+10 rows in set (0.12 sec)
+
+mysql> use tanisha;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_tanisha |
++-------------------+
+| department        |
+| emi               |
+| employee          |
++-------------------+
+3 rows in set (0.04 sec)
+
+mysql> select * from employee;
++-----+----------------+---------------+--------+---------+
+| id  | name           | company       | salary | Dept_Id |
++-----+----------------+---------------+--------+---------+
+| 101 | Aarav Sharma   | TCS           |  35000 |       2 |
+| 102 | Priya Verma    | Infosys       |  42000 |       4 |
+| 103 | Rohan Gupta    | Wipro         |  38000 |    NULL |
+| 104 | Sneha Patel    | Accenture     |  50000 |    NULL |
+| 105 | Shyam          | Capgemini     |  45000 |    NULL |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |    NULL |
+| 107 | Rahul Yadav    | HCL           |  39000 |    NULL |
+| 108 | Neha Joshi     | IBM           |  55000 |    NULL |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |    NULL |
+| 110 | Pooja Sharma   | Oracle        |  60000 |    NULL |
+| 111 | Aditya Jain    | Microsoft     |  85000 |    NULL |
+| 112 | Simran Kaur    | Google        |  95000 |    NULL |
+| 113 | Mohit Saxena   | Amazon        |  90000 |    NULL |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |    NULL |
++-----+----------------+---------------+--------+---------+
+15 rows in set (0.02 sec)
+
+mysql> select * from department;
++----+-----------------+
+| ID | Department_Name |
++----+-----------------+
+|  1 | Admin           |
+|  2 | Developer       |
+|  3 | Manager         |
+|  4 | HR              |
++----+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee left join department on employee.dept_id = department.id;
++-----+----------------+---------------+--------+---------+------+-----------------+
+| id  | name           | company       | salary | Dept_Id | ID   | Department_Name |
++-----+----------------+---------------+--------+---------+------+-----------------+
+| 101 | Aarav Sharma   | TCS           |  35000 |       2 |    2 | Developer       |
+| 102 | Priya Verma    | Infosys       |  42000 |       4 |    4 | HR              |
+| 103 | Rohan Gupta    | Wipro         |  38000 |    NULL | NULL | NULL            |
+| 104 | Sneha Patel    | Accenture     |  50000 |    NULL | NULL | NULL            |
+| 105 | Shyam          | Capgemini     |  45000 |    NULL | NULL | NULL            |
+| 106 | Anjali Mehta   | Cognizant     |  47000 |    NULL | NULL | NULL            |
+| 107 | Rahul Yadav    | HCL           |  39000 |    NULL | NULL | NULL            |
+| 108 | Neha Joshi     | IBM           |  55000 |    NULL | NULL | NULL            |
+| 109 | Karan Malhotra | Tech Mahindra |  41000 |    NULL | NULL | NULL            |
+| 110 | Pooja Sharma   | Oracle        |  60000 |    NULL | NULL | NULL            |
+| 111 | Aditya Jain    | Microsoft     |  85000 |    NULL | NULL | NULL            |
+| 112 | Simran Kaur    | Google        |  95000 |    NULL | NULL | NULL            |
+| 113 | Mohit Saxena   | Amazon        |  90000 |    NULL | NULL | NULL            |
+| 114 | Riya Agrawal   | Deloitte      |  52000 |    NULL | NULL | NULL            |
+| 115 | Riya Agrawal   | Deloitte      |  52000 |    NULL | NULL | NULL            |
++-----+----------------+---------------+--------+---------+------+-----------------+
+15 rows in set (0.00 sec)
+
+mysql> select * from employee right join department on employee.dept_id = department.id;
++------+--------------+---------+--------+---------+----+-----------------+
+| id   | name         | company | salary | Dept_Id | ID | Department_Name |
++------+--------------+---------+--------+---------+----+-----------------+
+| NULL | NULL         | NULL    |   NULL |    NULL |  1 | Admin           |
+|  101 | Aarav Sharma | TCS     |  35000 |       2 |  2 | Developer       |
+| NULL | NULL         | NULL    |   NULL |    NULL |  3 | Manager         |
+|  102 | Priya Verma  | Infosys |  42000 |       4 |  4 | HR              |
++------+--------------+---------+--------+---------+----+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee inner join department on employee.dept_id = department.id;
++-----+--------------+---------+--------+---------+----+-----------------+
+| id  | name         | company | salary | Dept_Id | ID | Department_Name |
++-----+--------------+---------+--------+---------+----+-----------------+
+| 101 | Aarav Sharma | TCS     |  35000 |       2 |  2 | Developer       |
+| 102 | Priya Verma  | Infosys |  42000 |       4 |  4 | HR              |
++-----+--------------+---------+--------+---------+----+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee left join department on employee.dept_id = department.id union select * from employee right join department on employee.dept_id = department.id;
++------+----------------+---------------+--------+---------+------+-----------------+
+| id   | name           | company       | salary | Dept_Id | ID   | Department_Name |
++------+----------------+---------------+--------+---------+------+-----------------+
+|  101 | Aarav Sharma   | TCS           |  35000 |       2 |    2 | Developer       |
+|  102 | Priya Verma    | Infosys       |  42000 |       4 |    4 | HR              |
+|  103 | Rohan Gupta    | Wipro         |  38000 |    NULL | NULL | NULL            |
+|  104 | Sneha Patel    | Accenture     |  50000 |    NULL | NULL | NULL            |
+|  105 | Shyam          | Capgemini     |  45000 |    NULL | NULL | NULL            |
+|  106 | Anjali Mehta   | Cognizant     |  47000 |    NULL | NULL | NULL            |
+|  107 | Rahul Yadav    | HCL           |  39000 |    NULL | NULL | NULL            |
+|  108 | Neha Joshi     | IBM           |  55000 |    NULL | NULL | NULL            |
+|  109 | Karan Malhotra | Tech Mahindra |  41000 |    NULL | NULL | NULL            |
+|  110 | Pooja Sharma   | Oracle        |  60000 |    NULL | NULL | NULL            |
+|  111 | Aditya Jain    | Microsoft     |  85000 |    NULL | NULL | NULL            |
+|  112 | Simran Kaur    | Google        |  95000 |    NULL | NULL | NULL            |
+|  113 | Mohit Saxena   | Amazon        |  90000 |    NULL | NULL | NULL            |
+|  114 | Riya Agrawal   | Deloitte      |  52000 |    NULL | NULL | NULL            |
+|  115 | Riya Agrawal   | Deloitte      |  52000 |    NULL | NULL | NULL            |
+| NULL | NULL           | NULL          |   NULL |    NULL |    1 | Admin           |
+| NULL | NULL           | NULL          |   NULL |    NULL |    3 | Manager         |
++------+----------------+---------------+--------+---------+------+-----------------+
+17 rows in set (0.02 sec)
+
+
+
+
+
+
+
+
