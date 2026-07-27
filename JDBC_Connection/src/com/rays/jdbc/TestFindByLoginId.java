@@ -1,3 +1,7 @@
+//Search :
+//1. Find by loginId
+//2. Find by authentication
+//3. Find by login
 package com.rays.jdbc;
 
 import java.sql.Connection;
@@ -5,24 +9,17 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class TestConnection {
-
+public class TestFindByLoginId {
 	public static void main(String[] args) throws Exception {
 
-		// Step 1 : Load Driver Class into the class loader
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
-		// Step 2 : Make connection to the database
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo", "root", "root");
 
-		System.out.println("Connection established successfully....." + conn.getCatalog());
-
-		// step 3. create Statement and get ResultSet or insert, update and delete
-		// records
 		Statement stmt = conn.createStatement();
 
-		// step 4 get records
-		ResultSet rs = stmt.executeQuery("select * from st_user");
+		ResultSet rs = stmt.executeQuery("select * from st_user where loginId = 'tanisha01@gmail.com'");
+		// find by login id
 
 		while (rs.next()) {
 			System.out.println(rs.getInt("id"));
@@ -33,5 +30,6 @@ public class TestConnection {
 			System.out.println(rs.getDate("dob"));
 			System.out.println("--------------");
 		}
+
 	}
 }
