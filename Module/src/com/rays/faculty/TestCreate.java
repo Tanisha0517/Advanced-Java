@@ -14,10 +14,13 @@ public class TestCreate {
 
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/rays", "root", "root");
 
+			conn.setAutoCommit(false); // Transaction begin
+
+			
 			Statement stmt = conn.createStatement();
 
 			int i = stmt.executeUpdate(
-					"insert into faculty(facultyId int primary key, facultyName varchar(50), subject varchar(50), qualification varchar(50), experience int )");
+					"create table faculty(facultyId int primary key, facultyName varchar(50), subject varchar(50), qualification varchar(50), experience int )");
 
 			System.out.println("record inserted : " + i + " row affected");
 			conn.commit();

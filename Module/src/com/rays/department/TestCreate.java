@@ -11,6 +11,7 @@ public class TestCreate {
 		
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/rays","root","root");
 		
+		
 		Statement stmt = conn.createStatement();
 		
 		int i = stmt.executeUpdate("create table department(departmentId int primary key, departmentName varchar(50), hodName varchar(50), totalFaculty int, location varchar(50))");

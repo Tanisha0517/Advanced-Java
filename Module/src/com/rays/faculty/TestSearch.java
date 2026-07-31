@@ -10,6 +10,7 @@ public class TestSearch {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/rays", "root", "root");
+		conn.setAutoCommit(false); // Transaction begin
 
 		Statement stmt = conn.createStatement();
 
