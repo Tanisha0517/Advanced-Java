@@ -4,29 +4,22 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TestSubjectModel {
-	
-	public static SubjectModel sm = new SubjectModel();
 
+	public static SubjectModel sm = new SubjectModel();
 
 	public static void main(String[] args) throws Exception {
 //		testCreate();
 //		testInsert();
 //		testUpdate();
 //		testDelete();
-		
+
 //		testFindByPk();
 		testSearch();
 	}
 
-
-
-	
-
-
-
-	//	--------------------------------------Create--------------------------------------------
+// --------------------------------------Create--------------------------------------------
 	public static void testCreate() throws Exception {
-		SubjectModel sm = new SubjectModel();
+//		SubjectModel sm = new SubjectModel();
 
 		sm.create();
 
@@ -37,11 +30,11 @@ public class TestSubjectModel {
 //		SubjectModel sm = new SubjectModel();
 		SubjectBean bean = new SubjectBean();
 
-		bean.setSubjectId(110);
-		bean.setSubjectName(" GenAI ");
-		bean.setSubjectCode("BTCS110");
+		bean.setSubjectId(101);
+		bean.setSubjectName("Software Engineering ");
+		bean.setSubjectCode("BTCS101");
 		bean.setCredits(4);
-		bean.setSemester(6);
+		bean.setSemester(2);
 
 		sm.insert(bean);
 
@@ -55,7 +48,10 @@ public class TestSubjectModel {
 		SubjectBean bean = new SubjectBean();
 
 		bean.setSubjectId(102);
-		bean.setSubjectName("Python");
+		bean.setSubjectName("Python Programming");
+		bean.setSubjectCode("BTCS102");
+		bean.setCredits(4);
+		bean.setSemester(2);
 
 		sm.update(bean);
 	}
@@ -66,7 +62,7 @@ public class TestSubjectModel {
 		sm.delete(103);
 	}
 
-//    ----------------------------------SearchQuery = FindByPK------------------------------
+//    ----------------------------------Search Query = FindByPK------------------------------
 	public static void testFindByPk() throws Exception {
 //		SubjectModel sm = new SubjectModel();
 		SubjectBean bean = new SubjectBean();
@@ -84,29 +80,27 @@ public class TestSubjectModel {
 			throw new RuntimeException("record not found");
 		}
 	}
-		
+
 //		---------------------------Search Query = FindBySearch------------------------------------------
 
 	public static void testSearch() throws Exception {
 //		SubjectModel sm = new SubjectModel();
 		SubjectBean bean = new SubjectBean();
-		//	bean.setFirstName("v");
-			List<SubjectBean> list = sm.Search(bean, 1, 5);
+		// bean.setFirstName("v");
+		List<SubjectBean> list = sm.Search(bean, 1, 5);
 
-			Iterator<SubjectBean> it = list.iterator();
+		Iterator<SubjectBean> it = list.iterator();
 
-			while (it.hasNext()) {
-				bean = it.next();
-				System.out.print(bean.getSubjectId());
-				System.out.print("\t" + bean.getSubjectName());
-				System.out.print("\t" + bean.getSubjectCode());
-				System.out.print("\t" + bean.getCredits());
-				System.out.println("\t" + bean.getSemester());
-				
-			}
+		while (it.hasNext()) {
+			bean = it.next();
+			System.out.print(bean.getSubjectId());
+			System.out.print("\t" + bean.getSubjectName());
+			System.out.print("\t" + bean.getSubjectCode());
+			System.out.print("\t" + bean.getCredits());
+			System.out.println("\t" + bean.getSemester());
+
+		}
 
 	}
-
-	
 
 }

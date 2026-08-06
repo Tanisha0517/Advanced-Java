@@ -14,18 +14,22 @@ public class SubjectModel {
 //	--------------------------------------Create--------------------------------------------
 	public void create() throws Exception {
 		Connection conn = null;
+		
 		try {
 			conn = JDBCDataSource.getConnection();
 
 			conn.setAutoCommit(false);
+			
 			PreparedStatement pstmt = conn.prepareStatement(
 					"create table subject(subjectId int primary key, subjectName varchar(50) ,subjectCode varchar(50) ,credits int,semester int)");
 			int i = pstmt.executeUpdate();
 			conn.commit();
 			System.out.println("Table created  successfully" + i);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			conn.rollback();
+			
 		} finally {
 			conn.close();
 		}
