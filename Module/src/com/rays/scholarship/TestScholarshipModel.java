@@ -14,7 +14,7 @@ public class TestScholarshipModel {
 //	  testUpdate();
 //	  testDelete();
 
-	  testSearch();
+		testSearch();
 	}
 
 //	-----------------Create---------------------------
@@ -96,34 +96,34 @@ public class TestScholarshipModel {
 		model.Insert(bean);
 
 	}
-	
+
 //	-----------------------------------------Update----------------------------------------
-	
-	private static void testUpdate() throws Exception{
+
+	private static void testUpdate() throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		ScholarshipBean bean = new ScholarshipBean();
-		
+
 		bean.setScholarshiId(11);
 		bean.setScholarshipName("Economic Support Scholarship");
 		bean.setAmount(40000);
 		bean.setEligibility("Sports Achievers");
 		bean.setLastDate(sdf.parse("2026-11-25"));
-		
+
 		model.Update(bean);
 	}
-	
+
 //	-----------------------------------------Delete----------------------------------------
-	
-	private static void testDelete() throws Exception{
+
+	private static void testDelete() throws Exception {
 		model.Delete(11);
 	}
-	
+
 //	-----------------------------------------Search----------------------------------------
-	
+
 	public static void testSearch() throws Exception {
 
 		ScholarshipBean bean = new ScholarshipBean();
-	//	bean.setFirstName("v");
+		// bean.setFirstName("v");
 		List<ScholarshipBean> list = model.search(bean, 0, 0);
 
 		Iterator<ScholarshipBean> it = list.iterator();
@@ -135,7 +135,7 @@ public class TestScholarshipModel {
 			System.out.print("\t" + bean.getAmount());
 			System.out.print("\t" + bean.getEligibility());
 			System.out.println("\t" + bean.getLastDate());
-			
+
 		}
 	}
 
