@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rays.result.ResultBean;
 import com.rays.util.JDBCDataSource;
 
 public class SubjectModel {
