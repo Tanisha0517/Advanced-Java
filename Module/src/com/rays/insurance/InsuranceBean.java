@@ -1,6 +1,6 @@
 package com.rays.insurance;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class InsuranceBean {
 
@@ -8,7 +8,7 @@ public class InsuranceBean {
 	private String policyHolderName;
 	private String policyType;
 	private int premiumAmount;
-	private Date expiryDate;
+	private  java.util.Date expiryDate;
 
 	public int getPolicyId() {
 		return policyId;
@@ -46,8 +46,8 @@ public class InsuranceBean {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(Date expiryDate) {
-		this.expiryDate = expiryDate;
+	public void setExpiryDate(Date date) {
+		this.expiryDate =  date;
 	}
 
 }

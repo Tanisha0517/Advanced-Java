@@ -170,7 +170,7 @@ public class SubjectModel {
 		
 //		--------------------------------------
 		
-		public List<SubjectBean> Search(SubjectBean bean, int pageNo, int pageSize) throws Exception {
+		public List<SubjectBean> search(SubjectBean bean, int pageNo, int pageSize) throws Exception {
 
 			Connection conn = null;
 			List<SubjectBean> list = new ArrayList<SubjectBean>();

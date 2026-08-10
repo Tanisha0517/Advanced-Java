@@ -87,7 +87,7 @@ public class TestSubjectModel {
 //		SubjectModel sm = new SubjectModel();
 		SubjectBean bean = new SubjectBean();
 		// bean.setFirstName("v");
-		List<SubjectBean> list = sm.Search(bean, 1, 5);
+		List<SubjectBean> list = sm.search(bean, 1, 5);
 
 		Iterator<SubjectBean> it = list.iterator();
 
