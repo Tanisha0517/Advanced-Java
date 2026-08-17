@@ -10,11 +10,13 @@
 
 <body>
 
-    <h1>Welcome to Our Website</h1>
+   	<%@ include file="Header.jsp"%>
+	<div align="center">
 
-    <p>Login successful!</p>
+		<h1>Welcome To Online Result System</h1>
 
-    <h3>Welcome User 👋</h3>
+	</div>
+	<%@ include file="Footer.jsp"%>
 
 </body>
 </html>

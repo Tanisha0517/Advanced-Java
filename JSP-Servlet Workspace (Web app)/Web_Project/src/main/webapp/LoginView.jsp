@@ -10,19 +10,35 @@
 
 <body>
 
-	<div align="center">
-		<h2>Login</h2>
+	<%@ include file="Header.jsp"%>
+	<form>
 
-		<form action="Login" method="post">
+		<div align="center">
 
-			<label>Username:</label> <input type="text" name="username">
-			<br>
-			<br> <label>Password:</label> <input type="password"
-				name="password"> <br>
-			<br> <input type="submit" value="Login">
-	</div>
+			<h1 style="color: darkblue;">Login</h1>
+
+			<table>
+				<tr>
+					<th>Login:<font color="red">*</font></th>
+					<td><input type="email" name="login" value=""
+						placeholder="enter you email"></td>
+				</tr>
+
+				<tr>
+					<th>Password:<font color="red">*</font></th>
+					<td><input type="password" name="password" value=""
+						placeholder="enter you password"></td>
+				</tr>
+
+				<tr>
+					<th></th>
+					<td><input type="submit" value="signIn"></td>
+				</tr>
+			</table>
+
+		</div>
 
 	</form>
-
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>
