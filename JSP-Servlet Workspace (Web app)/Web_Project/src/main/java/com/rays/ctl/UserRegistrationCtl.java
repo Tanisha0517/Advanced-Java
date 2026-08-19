@@ -12,21 +12,38 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.rays.bean.UserBean;
 import com.rays.model.UserModel;
+import com.rays.util.InputValidatorUtility;
 import com.rays.util.ServletUtility;
 
 @WebServlet("/UserRegistrationCtl") // Wild card mapping of servlet
 public class UserRegistrationCtl extends HttpServlet {
 
 	// get method is default HTTP method by default call by HTTP
+
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("request method == " + request.getMethod());
+
+		if (request.getMethod().equalsIgnoreCase("POST")) {
+			if (InputValidatorUtility.UserValidator(request) == false) {
+				ServletUtility.forward("UserRegistrationView.jsp", request, response);
+				return;
+			}
+		}
+		super.service(request, response);
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		System.out.println("this is doGet() method");
 
-		RequestDispatcher rd = request.getRequestDispatcher("UserRegistrationView.jsp");
-		rd.forward(request, response); // forward same request on view
+//		RequestDispatcher rd = request.getRequestDispatcher("UserRegistrationView.jsp");
+//		rd.forward(request, response); // forward same request on view
 
+		ServletUtility.forward("UserRegistrationView.jsp", request, response);
 	}
 
 	// post method is not default HTTP method it is call when user submit request
@@ -46,7 +63,7 @@ public class UserRegistrationCtl extends HttpServlet {
 		String password = request.getParameter("password");
 		String dob = request.getParameter("dob");
 
-		System.out.println(firstName + "\n" + lastName + "\n" + login + "\n" + password + "\n" + dob);
+//		System.out.println(firstName + "\n" + lastName + "\n" + login + "\n" + password + "\n" + dob);
 
 		try {
 
@@ -60,6 +77,7 @@ public class UserRegistrationCtl extends HttpServlet {
 			request.setAttribute("successMsg", "user registration successfully");
 
 		} catch (Exception e) {
+			request.setAttribute("errorMsg", "loginId already exist");
 			e.printStackTrace();
 		}
 

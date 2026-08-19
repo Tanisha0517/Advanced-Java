@@ -3,6 +3,7 @@ package com.rays.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,29 @@ import com.rays.bean.UserBean;
 import com.rays.util.JDBCDataSource;
 
 public class UserModel {
+	
+	public int nextPk() throws SQLException {
+
+		Connection conn = null;
+		int pk = 0;
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement("select max(id) from st_user");
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				pk = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+		return pk + 1; // return next auto-increment non-business primary key
+	}
+
+	
+	
 	public void create() throws Exception {
 		Connection conn = null;
 
@@ -47,13 +71,14 @@ public class UserModel {
 
 		try {
 
+			pk = nextPk();
 			conn = JDBCDataSource.getConnection();
 
 			conn.setAutoCommit(false);
 
 			PreparedStatement pstmt = conn.prepareStatement("insert into st_user values(?, ?, ?, ?, ?, ?)");
 
-			pstmt.setInt(1, bean.getId());
+			pstmt.setInt(1, pk);
 			pstmt.setString(2, bean.getFirstName());
 			pstmt.setString(3, bean.getLastName());
 			pstmt.setString(4, bean.getLoginId());
@@ -68,9 +93,9 @@ public class UserModel {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			conn.rollback();
+			JDBCDataSource.trnRollBack(conn);
 		} finally {
-			conn.close();
+			JDBCDataSource.closeConnection(conn);
 		}
 
 	}

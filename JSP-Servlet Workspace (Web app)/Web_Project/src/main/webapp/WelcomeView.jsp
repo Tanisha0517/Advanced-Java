@@ -5,11 +5,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome</title>
+<title>Insert title here</title>
 </head>
 
 <body>
+<%@ include file="Header.jsp"%>
+	<div align="center">
 
+		<h1>
+			Welcome To Online Result System<%=user != null ? "(" + user.getFirstName() + ")" : ""%></h1>
+
+	</div>
+	<%@ include file="Footer.jsp"%>
+
+</body>
+</html>
+
+<%--
    	<%@ include file="Header.jsp"%>
 	<div align="center">
 
@@ -17,6 +29,4 @@
 
 	</div>
 	<%@ include file="Footer.jsp"%>
-
-</body>
-</html>
+ --%>

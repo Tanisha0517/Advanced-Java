@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.rays.util.ServletUtility;
+
 @WebServlet("/WelcomeCtl") // Wild card mapping of servlet
 public class WelcomeCtl extends HttpServlet {
 	
@@ -16,10 +18,12 @@ public class WelcomeCtl extends HttpServlet {
 		protected void doGet(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
 
-			System.out.println("this is doGet() method");
+//			System.out.println("this is doGet() method");
+			
+			ServletUtility.forward("WelcomeView.jsp", request, response);
 
-			RequestDispatcher rd = request.getRequestDispatcher("WelcomeView.jsp");
-			rd.forward(request, response); // forward same request on view
+//			RequestDispatcher rd = request.getRequestDispatcher("WelcomeView.jsp");
+//			rd.forward(request, response); // forward same request on view
 
 		}
 
