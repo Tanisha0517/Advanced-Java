@@ -3,7 +3,6 @@ package com.rays.ctl;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,42 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.rays.bean.UserBean;
 import com.rays.model.UserModel;
-import com.rays.util.InputValidatorUtility;
 import com.rays.util.ServletUtility;
 
-@WebServlet("/UserRegistrationCtl") // Wild card mapping of servlet
-public class UserRegistrationCtl extends HttpServlet {
-
-	// get method is default HTTP method by default call by HTTP
-
-	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		System.out.println("request method == " + request.getMethod());
-
-		if (request.getMethod().equalsIgnoreCase("POST")) {
-			if (InputValidatorUtility.userValidator(request) == false) {
-				ServletUtility.forward("UserRegistrationView.jsp", request, response);
-				return;
-			}
-		}
-		super.service(request, response);
-	}
-
+@WebServlet("/UserCtl")
+public class UserCtl extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		System.out.println("this is doGet() method");
 
-//		RequestDispatcher rd = request.getRequestDispatcher("UserRegistrationView.jsp");
-//		rd.forward(request, response); // forward same request on view
+		ServletUtility.forward("UserView.jsp", request, response);
 
-		ServletUtility.forward("UserRegistrationView.jsp", request, response);
 	}
 
-	// post method is not default HTTP method it is call when user submit request
-	// from view
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -74,15 +51,14 @@ public class UserRegistrationCtl extends HttpServlet {
 			bean.setDob(sdf.parse(dob));
 			model.add(bean);
 
-			request.setAttribute("successMsg", "user registration successfully");
+			request.setAttribute("successMsg", "user saved successfully");
 
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", "loginId already exist");
 			e.printStackTrace();
 		}
 
-		ServletUtility.forward("UserRegistrationView.jsp", request, response);
+		ServletUtility.forward("UserView.jsp", request, response);
 
 	}
-
 }
