@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rays.patient.PatientBean;
+import com.rays.preparedstatement.patient.PatientBean;
 import com.rays.util.JDBCDataSource;
 
 public class BankAccountModel {

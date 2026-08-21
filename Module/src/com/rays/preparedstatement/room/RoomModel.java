@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rays.hotel.HotelBean;
+import com.rays.preparedstatement.hotel.HotelBean;
 import com.rays.util.JDBCDataSource;
 
 public class RoomModel {

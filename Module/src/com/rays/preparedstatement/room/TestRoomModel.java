@@ -3,7 +3,7 @@ package com.rays.preparedstatement.room;
 import java.util.Iterator;
 import java.util.List;
 
-import com.rays.hotel.HotelBean;
+import com.rays.preparedstatement.hotel.HotelBean;
 
 public class TestRoomModel {
 

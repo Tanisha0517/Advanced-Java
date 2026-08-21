@@ -3,7 +3,7 @@ package com.rays.preparedstatement.bankaccount;
 import java.util.Iterator;
 import java.util.List;
 
-import com.rays.patient.PatientBean;
+import com.rays.preparedstatement.patient.PatientBean;
 
 public class TestBankAccountModel {
 
