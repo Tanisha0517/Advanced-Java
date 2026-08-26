@@ -77,4 +77,236 @@ public class InputValidatorUtility {
 		return pass;
 	}
 
+	public static boolean serviceValidator(HttpServletRequest request) {
+
+		String serviceId = request.getParameter("serviceId");
+		String serviceName = request.getParameter("serviceName");
+		String price = request.getParameter("price");
+		String description = request.getParameter("description");
+		String serviceCategory = request.getParameter("serviceCategory");
+
+		boolean pass = true;
+
+		if (serviceId.equals("")) {
+			pass = false;
+			request.setAttribute("serviceId", "Service Id is required");
+		}
+
+		if (serviceName.equals("")) {
+			pass = false;
+			request.setAttribute("serviceName", "Service Name is required");
+		}
+
+		if (price.equals("")) {
+			pass = false;
+			request.setAttribute("price", "Price is required");
+		}
+
+		if (description.equals("")) {
+			pass = false;
+			request.setAttribute("description", "Description is required");
+		}
+
+		if (serviceCategory.equals("")) {
+			pass = false;
+			request.setAttribute("serviceCategory", "Service Category is required");
+		}
+		return pass;
+	}
+
+	public static boolean courseValidator(HttpServletRequest request) {
+
+		String courseId = request.getParameter("courseId");
+		String courseName = request.getParameter("courseName");
+		String duration = request.getParameter("duration");
+		String fees = request.getParameter("fees");
+		String trainerName = request.getParameter("trainerName");
+
+		boolean pass = true;
+
+		if (courseId.equals("")) {
+			pass = false;
+			request.setAttribute("courseId", "Course Id is required");
+		}
+
+		if (courseName.equals("")) {
+			pass = false;
+			request.setAttribute("courseName", "Course Name is required");
+		}
+
+		if (duration.equals("")) {
+			pass = false;
+			request.setAttribute("duration", "Duration is required");
+		}
+
+		if (fees.equals("")) {
+			pass = false;
+			request.setAttribute("fees", "Fees is required");
+		}
+
+		if (trainerName.equals("")) {
+			pass = false;
+			request.setAttribute("trainerName", "Trainer Name is required");
+		}
+		return pass;
+	}
+
+//	-----------------------------productValidator()---------------------------------------------
+
+	public static boolean productValidator(HttpServletRequest request) {
+
+		String productId = request.getParameter("productId");
+		String productName = request.getParameter("productName");
+		String price = request.getParameter("price");
+		String quantity = request.getParameter("quantity");
+		String category = request.getParameter("category");
+
+		boolean pass = true;
+
+		if (productId.equals("")) {
+			pass = false;
+			request.setAttribute("productId", "Product Id is required");
+		}
+
+		if (productName.equals("")) {
+			pass = false;
+			request.setAttribute("productName", "Product Name is required");
+		}
+
+		if (price.equals("")) {
+			pass = false;
+			request.setAttribute("price", "Price is required");
+		}
+
+		if (quantity.equals("")) {
+			pass = false;
+			request.setAttribute("quantity", "Quantity is required");
+		}
+
+		if (category.equals("")) {
+			pass = false;
+			request.setAttribute("category", "Category is required");
+		}
+		return pass;
+	}
+
+//	-----------------------------employeeValidator()-------------------------------
+
+	public static boolean employeeValidator(HttpServletRequest request) {
+		// id = non business pk
+
+		String employeeCode = request.getParameter("employeeCode");
+		String name = request.getParameter("name");
+		String designation = request.getParameter("designation");
+		String salary = request.getParameter("salary");
+		String joiningDate = request.getParameter("joiningDate");
+
+		boolean pass = true;
+
+		if (employeeCode.equals("")) {
+			pass = false;
+			request.setAttribute("employeeCode", "Employee Code is required");
+		}
+
+		if (name.equals("")) {
+			pass = false;
+			request.setAttribute("name", "Name is required");
+		}
+
+		if (designation.equals("")) {
+			pass = false;
+			request.setAttribute("designation", "Designation is required");
+		}
+
+		if (salary.equals("")) {
+			pass = false;
+			request.setAttribute("salary", "Salary is required");
+		}
+
+		if (joiningDate == null || joiningDate.trim().isEmpty()) {
+			pass = false;
+			request.setAttribute("joiningDate", "Joining Date is required");
+		}
+		return pass;
+	}
+
+//	----------------------------------studentValidator()-------------------------------------------
+
+	public static boolean studentValidator(HttpServletRequest request) {
+
+		String rollNo = request.getParameter("rollNo");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String mobileNo = request.getParameter("mobileNo");
+		String course = request.getParameter("course");
+
+		boolean pass = true;
+
+		if (rollNo.equals("")) {
+			pass = false;
+			request.setAttribute("rollNo", "Roll No is required");
+		}
+
+		if (name.equals("")) {
+			pass = false;
+			request.setAttribute("name", "Name is required");
+		}
+
+		if (email.equals("")) {
+			pass = false;
+			request.setAttribute("email", "email is required");
+		}
+
+		if (mobileNo.equals("")) {
+			pass = false;
+			request.setAttribute("mobileNo", "Contact No is required");
+		}
+
+		if (course.equals("")) {
+			pass = false;
+			request.setAttribute("course", "Course is required");
+		}
+		return pass;
+	}
+
+//	----------------------------------customerValidator----------------------------------------
+
+	public static boolean customerValidator(HttpServletRequest request) {
+		// id = non business pk
+
+		String customerId = request.getParameter("customerId");
+		String customerName = request.getParameter("customerName");
+		String email = request.getParameter("email");
+		String phoneNo = request.getParameter("phoneNo");
+		String address = request.getParameter("address");
+
+		boolean pass = true;
+
+		if (customerId.equals("")) {
+			pass = false;
+			request.setAttribute("customerId", "Customer Id is required");
+		}
+
+		if (customerName.equals("")) {
+			pass = false;
+			request.setAttribute("customerName", "Customer Name is required");
+		}
+
+		if (email.equals("")) {
+			pass = false;
+			request.setAttribute("email", "email is required");
+		}
+
+		if (phoneNo.equals("")) {
+			pass = false;
+			request.setAttribute("phoneNo", "Phone No is required");
+		}
+
+		if (address.equals("")) {
+			pass = false;
+			request.setAttribute("address", "Address is required");
+		}
+		return pass;
+	}
+
 }
