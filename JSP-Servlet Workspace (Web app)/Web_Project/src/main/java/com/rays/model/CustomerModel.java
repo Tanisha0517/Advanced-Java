@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rays.bean.CustomerBean;
-import com.rays.bean.EmployeeBean;
+
 import com.rays.util.JDBCDataSource;
 
 public class CustomerModel {
