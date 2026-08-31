@@ -75,17 +75,24 @@ body {
 
 		<h2><%="Hii, " + user.getFirstName()%></h2>
 
-		<a href="WelcomeCtl">Welcome</a> | <a href="UserListCtl">User List</a>
-		| <a href="UserCtl">Add User</a> | <a href="AddServiceCtl">Add
-			Service</a> | <a href="ServiceListCtl">View Service</a> | <a
-			href="AddCourseCtl">Add Courses</a> | <a href="CourseListCtl">View
-			Courses</a> | <a href="AddProductCtl">Add Product</a> | <a
-			href="ProductListCtl">View Product</a> | <a href="AddEmployeeCtl">Add
-			Employee</a> | <a href="EmployeeListCtl">View Employee</a> | <a
-			href="AddStudentCtl">Add Student</a> | <a href="StudentListCtl">View
-			Student</a> | <a href="AddCustomerCtl">Add Customer</a> | <a
-			href="CustomerListCtl">View Customer</a> | <a
-			href="LoginCtl?operation=logout">Logout</a> |
+		<a href="WelcomeCtl">Welcome</a> | 
+		<a href="UserListCtl">User List</a>|
+		<a href="UserCtl">Add User</a> | 
+		<a href="AddServiceCtl">Add Service</a> | 
+		<a href="ServiceListCtl">View Service</a> | 
+		<a href="AddCourseCtl">Add Courses</a> | 
+		<a href="CourseListCtl">View Courses</a> | 
+		<a href="AddProductCtl">Add Product</a> | 
+		<a href="ProductListCtl">View Product</a> | 
+		<a href="AddEmployeeCtl">Add Employee</a> | 
+		<a href="EmployeeListCtl">View Employee</a> | 
+		<a href="AddStudentCtl">Add Student</a> | 
+		<a href="StudentListCtl">View Student</a> | 
+		<a href="AddCustomerCtl">Add Customer</a> | 
+		<a href="CustomerListCtl">View Customer</a> | 
+		<a href="AddOrderCtl">Add Orders</a> |
+		<a href="OrderListCtl">View Orders</a> | 
+		<a href="LoginCtl?operation=logout">Logout</a> |
 
 		<%
 		} else {

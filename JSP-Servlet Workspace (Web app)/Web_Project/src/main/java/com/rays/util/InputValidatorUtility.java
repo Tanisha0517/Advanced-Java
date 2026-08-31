@@ -309,4 +309,44 @@ public class InputValidatorUtility {
 		return pass;
 	}
 
+//	--------------------------------------------orderValidator()--------------------------------------------------
+
+	public static boolean orderValidator(HttpServletRequest request) {
+		// id = non business pk
+
+		String orderId = request.getParameter("orderId");
+		String orderDate = request.getParameter("orderDate");
+		String amount = request.getParameter("amount");
+		String status = request.getParameter("status");
+//		String customerId = request.getParameter("customerId");
+
+		boolean pass = true;
+
+		if (orderId.equals("")) {
+			pass = false;
+			request.setAttribute("orderId", "Order Id is required");
+		}
+
+		if (orderDate.equals("")) {
+			pass = false;
+			request.setAttribute("orderDate", "Order Date is required");
+		}
+
+		if (amount.equals("")) {
+			pass = false;
+			request.setAttribute("amount", "Amount is required");
+		}
+
+		if (status.equals("")) {
+			pass = false;
+			request.setAttribute("status", "Status is required");
+		}
+
+//		if (customerId.equals("")) {
+//			pass = false;
+//			request.setAttribute("customerId", "Customer Id is required");
+//		}
+		return pass;
+	}
+
 }
