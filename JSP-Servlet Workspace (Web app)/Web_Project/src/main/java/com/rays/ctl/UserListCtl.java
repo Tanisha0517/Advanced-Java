@@ -13,7 +13,7 @@ import com.rays.bean.UserBean;
 import com.rays.model.UserModel;
 import com.rays.util.ServletUtility;
 
-@WebServlet("/UserListCtl")
+@WebServlet("/UserListCtl.do")
 public class UserListCtl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -21,10 +21,13 @@ public class UserListCtl extends HttpServlet {
 
 		UserModel model = new UserModel();
 		UserBean bean = new UserBean();
+		int pageNo = 1;
+		int pageSize = 5;
 
 		try {
-			List<UserBean> list = model.search(bean, 1, 5);
+			List<UserBean> list = model.search(bean, pageNo, pageSize);
 			request.setAttribute("list", list);
+			request.setAttribute("pageNo", pageNo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -38,6 +41,8 @@ public class UserListCtl extends HttpServlet {
 
 		UserModel model = new UserModel();
 		UserBean bean = new UserBean();
+		int pageNo = 1;
+		int pageSize = 5;
 
 		String op = request.getParameter("operation");
 		String[] ids = request.getParameterValues("ids");
@@ -63,10 +68,22 @@ public class UserListCtl extends HttpServlet {
 			bean.setFirstName(request.getParameter("firstName"));
 			bean.setLastName(request.getParameter("lastName"));
 		}
+		
+		if (op.equals("previous")) {
+			pageNo = Integer.parseInt(request.getParameter("pageNo"));
+			pageNo--;
+		}
+
+		if (op.equals("next")) {
+			pageNo = Integer.parseInt(request.getParameter("pageNo"));
+			pageNo++;
+		}
+
 
 		try {
-			List<UserBean> list = model.search(bean, 1, 5);
+			List<UserBean> list = model.search(bean, pageNo, pageSize);
 			request.setAttribute("list", list);
+			request.setAttribute("pageNo", pageNo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

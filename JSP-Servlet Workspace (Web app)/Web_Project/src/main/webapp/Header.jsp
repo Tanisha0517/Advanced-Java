@@ -76,8 +76,8 @@ body {
 		<h2><%="Hii, " + user.getFirstName()%></h2>
 
 		<a href="WelcomeCtl">Welcome</a> | 
-		<a href="UserListCtl">User List</a>|
-		<a href="UserCtl">Add User</a> | 
+		<a href="UserListCtl.do">User List</a>|
+		<a href="UserCtl.do">Add User</a> | 
 		<a href="AddServiceCtl">Add Service</a> | 
 		<a href="ServiceListCtl">View Service</a> | 
 		<a href="AddCourseCtl">Add Courses</a> | 
@@ -92,6 +92,8 @@ body {
 		<a href="CustomerListCtl">View Customer</a> | 
 		<a href="AddOrderCtl">Add Orders</a> |
 		<a href="OrderListCtl">View Orders</a> | 
+		<a href="AddVehicleCtl">Add Vehicles</a> |
+		<a href="VehicleListCtl">View Vehicles</a> | 
 		<a href="LoginCtl?operation=logout">Logout</a> |
 
 		<%

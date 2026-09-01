@@ -349,4 +349,48 @@ public class InputValidatorUtility {
 		return pass;
 	}
 
+//	----------------------------------vehicleValidator()-------------------------------------------
+	public static boolean vehicleValidator(HttpServletRequest request) {
+		// id = non business pk
+
+		String vehicleNo = request.getParameter("vehicleNo");
+		String vehicleName = request.getParameter("vehicleName");
+		String model = request.getParameter("model");
+		String color = request.getParameter("color");
+		String price = request.getParameter("price");
+
+		boolean pass = true;
+
+		if (vehicleNo.equals("")) {
+
+		    pass = false;
+		    request.setAttribute("vehicleNo", "Vehicle Number is required");
+
+		} else if (!vehicleNo.matches("^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$")) {
+
+		    pass = false;
+		    request.setAttribute("vehicleNo", "Please enter a valid vehicle number (e.g., MP09AB1234)");
+		}
+
+		if (vehicleName.equals("")) {
+			pass = false;
+			request.setAttribute("vehicleName", "Vehicle Name is required");
+		}
+
+		if (model.equals("")) {
+			pass = false;
+			request.setAttribute("model", "Model is required");
+		}
+
+		if (color.equals("")) {
+			pass = false;
+			request.setAttribute("color", "Color is required");
+		}
+
+		if (price.equals("")) {
+			pass = false;
+			request.setAttribute("price", "Price is required");
+		}
+		return pass;
+	}
 }
