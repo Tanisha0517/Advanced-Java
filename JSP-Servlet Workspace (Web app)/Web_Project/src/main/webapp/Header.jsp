@@ -94,6 +94,8 @@ body {
 		<a href="OrderListCtl">View Orders</a> | 
 		<a href="AddVehicleCtl">Add Vehicles</a> |
 		<a href="VehicleListCtl">View Vehicles</a> | 
+		<a href="AddPatientCtl">Add Patient</a> |
+		<a href="PatientListCtl.do">View Patient</a> | 
 		<a href="LoginCtl?operation=logout">Logout</a> |
 
 		<%

@@ -363,13 +363,13 @@ public class InputValidatorUtility {
 
 		if (vehicleNo.equals("")) {
 
-		    pass = false;
-		    request.setAttribute("vehicleNo", "Vehicle Number is required");
+			pass = false;
+			request.setAttribute("vehicleNo", "Vehicle Number is required");
 
 		} else if (!vehicleNo.matches("^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$")) {
 
-		    pass = false;
-		    request.setAttribute("vehicleNo", "Please enter a valid vehicle number (e.g., MP09AB1234)");
+			pass = false;
+			request.setAttribute("vehicleNo", "Please enter a valid vehicle number (e.g., MP09AB1234)");
 		}
 
 		if (vehicleName.equals("")) {
@@ -391,6 +391,53 @@ public class InputValidatorUtility {
 			pass = false;
 			request.setAttribute("price", "Price is required");
 		}
+		return pass;
+	}
+
+//	-------------------------------------patientValidator()-----------------------------------
+
+	public static boolean patientValidator(HttpServletRequest request) {
+		// id = non business pk
+
+		String patientId = request.getParameter("patientId");
+		String patientName = request.getParameter("patientName");
+		String disease = request.getParameter("disease");
+		String doctorName = request.getParameter("doctorName");
+		String admissionDate = request.getParameter("admissionDate");
+
+		boolean pass = true;
+
+		if (patientId.equals("")) {
+			pass = false;
+			request.setAttribute("patientId", "Patient Id is required");
+		} else if (!patientId.matches("^P[0-9]{3}$")) {
+
+			pass = false;
+
+			request.setAttribute("patientId", "Please enter a valid Patient ID (e.g., P101)");
+
+		}
+
+		if (patientName.equals("")) {
+			pass = false;
+			request.setAttribute("patientName", "Patient Name is required");
+		}
+
+		if (disease.equals("")) {
+			pass = false;
+			request.setAttribute("disease", "Disease is required");
+		}
+
+		if (doctorName.equals("")) {
+			pass = false;
+			request.setAttribute("doctorName", "Doctor Name is required");
+		}
+
+		if (admissionDate.equals("")) {
+			pass = false;
+			request.setAttribute("admissionDate", "Admission Date is required");
+		}
+
 		return pass;
 	}
 }

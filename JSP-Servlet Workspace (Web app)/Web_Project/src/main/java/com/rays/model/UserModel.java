@@ -170,6 +170,7 @@ public class UserModel {
 //	-----------------------------------------Search - findbypk--------------------------------------------
 
 	public UserBean findByPk(int id) throws Exception {
+		
 
 		Connection conn = null;
 		UserBean bean = null;

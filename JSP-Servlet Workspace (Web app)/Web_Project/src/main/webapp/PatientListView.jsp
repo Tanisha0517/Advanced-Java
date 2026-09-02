@@ -1,5 +1,6 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
+<%@page import="com.rays.bean.PatientBean"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,9 +11,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-     <%
-	List<UserBean> list = (List) request.getAttribute("list");
-	Iterator<UserBean> it = list.iterator();
+
+<%
+	List<PatientBean> list = (List) request.getAttribute("list");
+	Iterator<PatientBean> it = list.iterator();
 	
 	String succ = (String) request.getAttribute("successMsg");
 	String err = (String) request.getAttribute("errorMsg");
@@ -20,14 +22,12 @@
 	%>
 
 	<%@ include file="Header.jsp"%>
-	
-	<form action="UserListCtl.do" method="post">
-	
+	<form action="PatientListCtl.do" method="post">
 	<div align="center">
 
-		<h1>User List</h1>
-		
-		<h3 style="color: red"><%=err != null ? err : ""%></h3>
+		<h1>Patient List</h1>
+
+        <h3 style="color: red"><%=err != null ? err : ""%></h3>
 		<h3 style="color: green"><%=succ != null ? succ : ""%></h3>
 
 
@@ -35,50 +35,48 @@
 
         <table>
 				<tr>
-					<td><input type="text" name="firstName" value=""
-						placeholder="search by firstName"></td>
-					<td><input type="text" name="lastName" value=""
-						placeholder="search by lastName"></td>
+					<td><input type="text" name="patientId" value=""
+						placeholder="search by patient id"></td>
+					<td><input type="text" name="disease" value=""
+						placeholder="search by disease"></td>
 					<td><input type="submit" name="operation" value="search"></td>
 				</tr>
 		</table>
-
-
 
 		<table border="1px" width="100%">
 
 			<tr style="background-color: skyblue">
 			<th><input type="checkbox"
 						onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
-				<th>Id</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Login</th>
-				<th>Dob</th>
+				<th>Patient Id</th>
+				<th>Patient Name</th>
+				<th>Disease</th>
+				<th>Doctor Name</th>
+				<th>Admission Date</th>
 				<th>Edit</th>
 			</tr>
 
 			<%
 			while (it.hasNext()) {
-				UserBean bean = it.next();
+				PatientBean bean = it.next();
 			%>
 			<tr align="center" style="background-color: lightgrey">
 			<td><input type="checkbox" name="ids"
 						value="<%=bean.getId()%>"></td>
-				<td><%=bean.getId()%></td>
-				<td><%=bean.getFirstName()%></td>
-				<td><%=bean.getLastName()%></td>
-				<td><%=bean.getLoginId()%></td>
-				<td><%=bean.getDob()%></td>
-				<td><a href="UserCtl.do?id=<%=bean.getId()%>">Edit</a></td>
+				<td><%=bean.getPatientId()%></td>
+				<td><%=bean.getPatientName()%></td>
+				<td><%=bean.getDisease()%></td>
+				<td><%=bean.getDoctorName()%></td>
+				<td><%=bean.getAdmissionDate()%></td>
+				<td><a href="PatientListCtl.do?id=<%=bean.getId()%>">Edit</a></td>
 			</tr>
 			<%
 			}
 			%>
 
 		</table>
-		
-		<h3>
+
+	<h3>
 			pageNo=<%=pageNo%>
 		</h3>
 
@@ -96,5 +94,6 @@
 	</form>
 
 	<%@ include file="Footer.jsp"%>
+
 </body>
 </html>
