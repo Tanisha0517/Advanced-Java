@@ -440,4 +440,54 @@ public class InputValidatorUtility {
 
 		return pass;
 	}
+
+//	---------------------------------------doctorValidator()--------------------------------
+
+	public static boolean doctorValidator(HttpServletRequest request) {
+		// id = non business pk
+
+		String doctorId = request.getParameter("doctorId");
+		String doctorName = request.getParameter("doctorName");
+		String specialization = request.getParameter("specialization");
+		String experience = request.getParameter("experience");
+		String contactNo = request.getParameter("contactNo");
+
+		boolean pass = true;
+
+		if (doctorId.equals("")) {
+
+			pass = false;
+
+			request.setAttribute("doctorId", "Doctor Id is required");
+
+		} else if (!doctorId.matches("^DOC[0-9]{3}$")) {
+
+			pass = false;
+
+			request.setAttribute("doctorId", "Please enter a valid Doctor ID (e.g., DOC001)");
+
+		}
+
+		if (doctorName.equals("")) {
+			pass = false;
+			request.setAttribute("doctorName", "Doctor Name is required");
+		}
+
+		if (specialization.equals("")) {
+			pass = false;
+			request.setAttribute("specialization", "Specialization is required");
+		}
+
+		if (experience.equals("")) {
+			pass = false;
+			request.setAttribute("experience", "Experience is required");
+		}
+
+		if (contactNo.equals("")) {
+			pass = false;
+			request.setAttribute("contactNo", "Contact Number is required");
+		}
+
+		return pass;
+	}
 }

@@ -18,7 +18,7 @@
 
 		<div align="center">
 
-			<h1 style="color: darkblue;">Add User</h1>
+			<h1 style="color: darkblue;"><%=bean != null ? "Update User" : "Add User"%></h1>
 
 			<h3 style="color: green"><%=succ != null ? succ : ""%></h3>
 			<h3 style="color: red"><%=err != null ? err : ""%></h3>

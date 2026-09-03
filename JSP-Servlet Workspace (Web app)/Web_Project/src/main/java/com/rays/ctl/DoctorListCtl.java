@@ -9,38 +9,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.rays.bean.PatientBean;
-import com.rays.model.PatientModel;
+import com.rays.bean.DoctorBean;
+import com.rays.bean.UserBean;
+import com.rays.model.DoctorModel;
+import com.rays.model.UserModel;
 import com.rays.util.ServletUtility;
 
-@WebServlet("/PatientListCtl.do")
-public class PatientListCtl extends HttpServlet {
+@WebServlet("/DoctorListCtl.do")
+public class DoctorListCtl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		PatientModel model = new PatientModel();
-		PatientBean bean = new PatientBean();
+		DoctorModel model = new DoctorModel();
+		DoctorBean bean = new DoctorBean();
 		int pageNo = 1;
 		int pageSize = 5;
 
 		try {
-			List<PatientBean> list = model.search(bean, pageNo, pageSize);
+			List<DoctorBean> list = model.search(bean, pageNo, pageSize);
 			request.setAttribute("list", list);
 			request.setAttribute("pageNo", pageNo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		ServletUtility.forward("PatientListView.jsp", request, response);
+		ServletUtility.forward("DoctorListView.jsp", request, response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		PatientModel model = new PatientModel();
-		PatientBean bean = new PatientBean();
+		DoctorModel model = new DoctorModel();
+		DoctorBean bean = new DoctorBean();
 		int pageNo = 1;
 		int pageSize = 5;
 
@@ -65,8 +67,8 @@ public class PatientListCtl extends HttpServlet {
 		}
 
 		if (op.equals("search")) {
-			bean.setPatientId(request.getParameter("patientId"));
-			bean.setDisease(request.getParameter("disease"));
+			bean.setDoctorId(request.getParameter("doctorId"));
+			bean.setDoctorName(request.getParameter("doctorName"));
 		}
 
 		if (op.equals("previous")) {
@@ -80,14 +82,14 @@ public class PatientListCtl extends HttpServlet {
 		}
 
 		try {
-			List<PatientBean> list = model.search(bean, pageNo, pageSize);
+			List<DoctorBean> list = model.search(bean, pageNo, pageSize);
 			request.setAttribute("list", list);
 			request.setAttribute("pageNo", pageNo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		ServletUtility.forward("PatientListView.jsp", request, response);
+		ServletUtility.forward("DoctorListView.jsp", request, response);
 
 	}
 

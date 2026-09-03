@@ -123,10 +123,11 @@ public class PatientModel {
 			while (rs.next()) {
 				bean = new PatientBean();
 				bean.setId(rs.getInt("id"));
+				bean.setPatientId(rs.getString("patientId"));
 				bean.setPatientName(rs.getString("patientName"));
 				bean.setDisease(rs.getString("disease"));
 				bean.setDoctorName(rs.getString("doctorName"));
-				bean.setAdmissionDate(rs.getDate("date"));
+				bean.setAdmissionDate(rs.getDate("admissionDate"));
 				
 			}
 
@@ -219,11 +220,11 @@ public class PatientModel {
 			while (rs.next()) {
 				bean = new PatientBean();
 				bean.setId(rs.getInt("id"));
-				pstmt.setString(2, bean.getPatientId());
-				pstmt.setString(3, bean.getPatientName());
-				pstmt.setString(4, bean.getDisease());
-				pstmt.setString(5, bean.getDoctorName());
-				pstmt.setDate(6, new java.sql.Date(bean.getAdmissionDate().getTime()));
+			    bean.setPatientId(rs.getString("patientId"));
+			    bean.setPatientName(rs.getString("patientName"));
+			    bean.setDisease(rs.getString("disease"));
+			    bean.setDoctorName(rs.getString("doctorName"));
+			    bean.setAdmissionDate(rs.getDate("admissionDate"));
 			}
 
 		} catch (Exception e) {

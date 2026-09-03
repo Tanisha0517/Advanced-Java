@@ -64,7 +64,7 @@ public class UserCtl extends HttpServlet {
 			bean.setLoginId(login);
 			bean.setPassword(password);
 			bean.setDob(sdf.parse(dob));
-			model.add(bean);
+			
 
 			if (op.equals("save")) {
 				model.add(bean);
