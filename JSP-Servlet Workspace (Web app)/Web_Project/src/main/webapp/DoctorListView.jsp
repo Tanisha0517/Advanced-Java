@@ -35,6 +35,8 @@
 
         <input type="hidden" name="pageNo" value="<%=pageNo%>">
 
+        
+        <!-- Search -->
         <table>
 				<tr>
 					<td><input type="text" name="doctorId" value=""
@@ -44,7 +46,10 @@
 					<td><input type="submit" name="operation" value="search"></td>
 				</tr>
 		</table>
-
+		
+		
+		
+        <!-- Doctor List -->
 		<table border="1px" width="100%">
 
 			<tr style="background-color: skyblue">
@@ -72,7 +77,7 @@
 				<td><%=bean.getSpecialization()%></td>
 				<td><%=bean.getExperience()%></td>
 				<td><%=bean.getContactNo()%></td>
-				<td><a href="DoctorListCtl.do?id=<%=bean.getId()%>">Edit</a></td>
+				<td><a href="AddDoctorCtl.do?id=<%=bean.getId()%>">Edit</a></td>
 			</tr>
 			<%
 			}
@@ -80,21 +85,30 @@
 
 		</table>
 
-	<h3>
-			pageNo=<%=pageNo%>
-		</h3>
-
-	</div>
+	<!-- Pagination -->
+	   <p>
+				Page
+				<%=pageNo%></p>
 	
-	<table width="100%">
-			<tr>
-				<td><input type="submit" name="operation" value="previous" <%=pageNo == 1 ? "disabled" : ""%>></td>
-				<td align="center"><input type="submit" name="operation"
-					value="delete"></td>
-				<td align="right"><input type="submit" name="operation"
-					value="next" <%=list.size() < 5 ? "disabled" : ""%>></td>
-			</tr>
-		</table>
+	<table>
+				<tr>
+
+					<td align="left"><input type="submit"
+						name="operation" value="previous"
+						<%=pageNo == 1 ? "disabled" : ""%>></td>
+
+					<td align="center"><input type="submit"
+						name="operation" value="delete"></td>
+
+					<td align="right"><input type="submit"
+						name="operation" value="next"
+						<%=list.size() < 5 ? "disabled" : ""%>></td>
+
+				</tr>
+			</table>
+
+		</div>
+
 	</form>
 
 	<%@ include file="Footer.jsp"%>

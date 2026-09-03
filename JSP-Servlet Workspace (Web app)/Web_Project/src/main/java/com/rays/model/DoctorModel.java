@@ -77,42 +77,42 @@ public class DoctorModel {
 	}
 
 //	---------------------------------------------Update--------------------------------------------------
+    
+	public void update(DoctorBean bean) throws SQLException {
 
-//	public void update(UserBean bean) throws Exception {
-//
-//		Connection conn = null;
-//
-//		try {
-//
-//			conn = JDBCDataSource.getConnection();
-//
-//			conn.setAutoCommit(false);
-//
-//			PreparedStatement pstmt = conn.prepareStatement(
-//					"update st_user set firstName = ?, lastName = ?, loginId = ?, password = ?, dob = ? where id = ?");
-//
-//			pstmt.setString(1, bean.getFirstName());
-//			pstmt.setString(2, bean.getLastName());
-//			pstmt.setString(3, bean.getLoginId());
-//			pstmt.setString(4, bean.getPassword());
-//			pstmt.setDate(5, new java.sql.Date(bean.getDob().getTime()));
-//			pstmt.setInt(6, bean.getId());
-//
-//			int i = pstmt.executeUpdate();
-//
-//			conn.commit();
-//
-//			System.out.println("record updated successfully: " + i);
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			conn.rollback();
-//		} finally {
-//			conn.close();
-//		}
-//
-//	}
+		Connection conn = null;
 
+		try {
+
+			conn = JDBCDataSource.getConnection();
+
+			conn.setAutoCommit(false);
+
+			PreparedStatement pstmt = conn.prepareStatement(
+					"update doctor set  doctorId = ?, doctorName = ?, specialization = ?, experience = ?, contactNo=? where id = ?");
+
+			pstmt.setString(1, bean.getDoctorId());
+			pstmt.setString(2, bean.getDoctorName());
+			pstmt.setString(3, bean.getSpecialization());
+			pstmt.setInt(4, bean.getExperience());
+			pstmt.setString(5, bean.getContactNo());
+			pstmt.setInt(6, bean.getId());
+
+			int i = pstmt.executeUpdate();
+
+			conn.commit();
+
+			System.out.println("record updated successfully: " + i);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			conn.rollback();
+		} finally {
+			conn.close();
+		}
+
+	}
+	
 //	---------------------------------------------Delete--------------------------------------------------
 	public void delete(int id) throws Exception {
 

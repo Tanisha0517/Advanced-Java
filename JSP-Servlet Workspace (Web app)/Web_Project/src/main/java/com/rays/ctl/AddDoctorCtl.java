@@ -13,7 +13,7 @@ import com.rays.model.DoctorModel;
 import com.rays.util.InputValidatorUtility;
 import com.rays.util.ServletUtility;
 
-@WebServlet("/AddDoctorCtl")
+@WebServlet("/AddDoctorCtl.do")
 public class AddDoctorCtl extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -21,19 +21,6 @@ public class AddDoctorCtl extends HttpServlet {
 
 		System.out.println("request method == " + request.getMethod());
 
-		DoctorModel model = new DoctorModel();
-		DoctorBean bean = new DoctorBean();
-		String id = request.getParameter("id");
-		
-		if (id != null) {
-			try {
-				bean = model.findByPk(Integer.parseInt(id));
-				request.setAttribute("bean", bean);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
 		if (request.getMethod().equalsIgnoreCase("POST")) {
 			if (InputValidatorUtility.doctorValidator(request) == false) {
 				ServletUtility.forward("AddDoctorView.jsp", request, response);
@@ -47,6 +34,20 @@ public class AddDoctorCtl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		DoctorModel model = new DoctorModel();
+		DoctorBean bean = new DoctorBean();
+		String id = request.getParameter("id");
+		
+		if (id != null) {
+			try {
+				bean = model.findByPk(Integer.parseInt(id));
+				request.setAttribute("bean", bean);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
+		
 		ServletUtility.forward("AddDoctorView.jsp", request, response);
 
 	}
@@ -58,6 +59,7 @@ public class AddDoctorCtl extends HttpServlet {
 
 		DoctorBean bean = new DoctorBean();
 		DoctorModel model = new DoctorModel();
+		String op = request.getParameter("operation");
 
 		String doctorId = request.getParameter("doctorId").trim();
 		String doctorName = request.getParameter("doctorName").trim();
@@ -74,10 +76,15 @@ public class AddDoctorCtl extends HttpServlet {
 			bean.setSpecialization(specialization);
 			bean.setExperience(experience);
 			bean.setContactNo(contactNo);
-			model.add(bean);
 
-			request.setAttribute("successMsg", "Doctor added successfully");
-
+			if (op.equals("save")) {
+				model.add(bean);
+				request.setAttribute("successMsg", "Doctor Data saved successfully");
+			} else if (op.equals("update")) {
+				bean.setId(Integer.parseInt(request.getParameter("id")));
+				model.update(bean);
+				request.setAttribute("successMsg", "Doctor Data updated successfully");
+			}
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", "Doctor Id already exist");
 			e.printStackTrace();
