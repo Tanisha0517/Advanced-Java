@@ -74,6 +74,42 @@ public class PatientModel {
 
 	}
 
+//	------------------------------------------update()-----------------------------------------------
+	public void update(PatientBean bean) throws SQLException {
+
+		Connection conn = null;
+
+		try {
+
+			conn = JDBCDataSource.getConnection();
+
+			conn.setAutoCommit(false);
+
+			PreparedStatement pstmt = conn.prepareStatement(
+					"update patient set  patientId = ?, patientName = ?, disease = ?, doctorName = ?, admissionDate=? where id = ?");
+
+			pstmt.setString(1, bean.getPatientId());
+			pstmt.setString(2, bean.getPatientName());
+			pstmt.setString(3, bean.getDisease());
+			pstmt.setString(4, bean.getDoctorName());
+			pstmt.setDate(5, new java.sql.Date(bean.getAdmissionDate().getTime()));
+			pstmt.setInt(6, bean.getId());
+
+			int i = pstmt.executeUpdate();
+
+			conn.commit();
+
+			System.out.println("record updated successfully: " + i);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			conn.rollback();
+		} finally {
+			conn.close();
+		}
+
+	}
+
 //	------------------------------------------delete()-----------------------------------------------
 	public void delete(int id) throws Exception {
 
@@ -103,7 +139,7 @@ public class PatientModel {
 		}
 
 	}
-	
+
 //	-------------------------------------------findByPk()--------------------------------------------
 	public PatientBean findByPk(int id) throws SQLException {
 
@@ -128,7 +164,7 @@ public class PatientModel {
 				bean.setDisease(rs.getString("disease"));
 				bean.setDoctorName(rs.getString("doctorName"));
 				bean.setAdmissionDate(rs.getDate("admissionDate"));
-				
+
 			}
 
 		} catch (Exception e) {
@@ -140,7 +176,6 @@ public class PatientModel {
 		return bean;
 
 	}
-
 
 //	-------------------------------------------search()----------------------------------------------
 	public List<PatientBean> search(PatientBean bean, int pageNo, int pageSize) throws SQLException {
@@ -220,11 +255,11 @@ public class PatientModel {
 			while (rs.next()) {
 				bean = new PatientBean();
 				bean.setId(rs.getInt("id"));
-			    bean.setPatientId(rs.getString("patientId"));
-			    bean.setPatientName(rs.getString("patientName"));
-			    bean.setDisease(rs.getString("disease"));
-			    bean.setDoctorName(rs.getString("doctorName"));
-			    bean.setAdmissionDate(rs.getDate("admissionDate"));
+				bean.setPatientId(rs.getString("patientId"));
+				bean.setPatientName(rs.getString("patientName"));
+				bean.setDisease(rs.getString("disease"));
+				bean.setDoctorName(rs.getString("doctorName"));
+				bean.setAdmissionDate(rs.getDate("admissionDate"));
 			}
 
 		} catch (Exception e) {

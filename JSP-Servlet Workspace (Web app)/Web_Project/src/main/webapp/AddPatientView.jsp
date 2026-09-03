@@ -21,13 +21,15 @@
 	<%@ include file="Header.jsp"%>
 
 	<div align="center">
-		<h1 align="center" style="color: darkblue;">Add Patient</h1>
+		
+		<h1><%=bean != null ? "Update Patient" : "Add Patient"%></h1>
 
 		<h3 style="color: red"><%=err != null ? err : ""%></h3>
 		<h3 style="color: green"><%=succ != null ? succ : ""%></h3>
 
-		<form action="AddPatientCtl" method="post">
-
+		<form action="AddPatientCtl.do" method="post">
+        <input type="hidden" name="id"
+				value="<%=bean != null ? bean.getId() : ""%>">
 
 			<table>
 

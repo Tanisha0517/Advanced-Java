@@ -33,6 +33,8 @@
 
         <input type="hidden" name="pageNo" value="<%=pageNo%>">
 
+
+        <!-- Search -->
         <table>
 				<tr>
 					<td><input type="text" name="patientId" value=""
@@ -42,12 +44,15 @@
 					<td><input type="submit" name="operation" value="search"></td>
 				</tr>
 		</table>
+		
+		<!-- Parient List -->
 
 		<table border="1px" width="100%">
 
 			<tr style="background-color: skyblue">
 			<th><input type="checkbox"
 						onclick="document.querySelectorAll('input[name=ids]').forEach(c=>c.checked=this.checked)"></th>
+				<th>ID</th>
 				<th>Patient Id</th>
 				<th>Patient Name</th>
 				<th>Disease</th>
@@ -63,6 +68,8 @@
 			<tr align="center" style="background-color: lightgrey">
 			<td><input type="checkbox" name="ids"
 						value="<%=bean.getId()%>"></td>
+						
+				<td><%=bean.getId()%></td>
 				<td><%=bean.getPatientId()%></td>
 				<td><%=bean.getPatientName()%></td>
 				<td><%=bean.getDisease()%></td>
@@ -75,22 +82,31 @@
 			%>
 
 		</table>
+		
+		<!-- Pagination -->
+		<p>
+				Page
+				<%=pageNo%></p>
 
-	<h3>
-			pageNo=<%=pageNo%>
-		</h3>
+			<table>
+				<tr>
 
-	</div>
-	
-	<table width="100%">
-			<tr>
-				<td><input type="submit" name="operation" value="previous" <%=pageNo == 1 ? "disabled" : ""%>></td>
-				<td align="center"><input type="submit" name="operation"
-					value="delete"></td>
-				<td align="right"><input type="submit" name="operation"
-					value="next" <%=list.size() < 5 ? "disabled" : ""%>></td>
-			</tr>
-		</table>
+					<td align="left"><input type="submit"
+						name="operation" value="previous"
+						<%=pageNo == 1 ? "disabled" : ""%>></td>
+
+					<td align="center"><input type="submit"
+						name="operation" value="delete"></td>
+
+					<td align="right"><input type="submit"
+						name="operation" value="next"
+						<%=list.size() < 5 ? "disabled" : ""%>></td>
+
+				</tr>
+			</table>
+
+		</div>
+
 	</form>
 
 	<%@ include file="Footer.jsp"%>

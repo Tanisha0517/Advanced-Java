@@ -22,19 +22,6 @@ public class AddPatientCtl extends HttpServlet {
 
 		System.out.println("request method == " + request.getMethod());
 
-		PatientModel model = new PatientModel();
-		PatientBean bean = new PatientBean();
-		String id = request.getParameter("id");
-
-		if (id != null) {
-			try {
-				bean = model.findByPk(Integer.parseInt(id));
-				request.setAttribute("bean", bean);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
 		if (request.getMethod().equalsIgnoreCase("POST")) {
 			if (InputValidatorUtility.patientValidator(request) == false) {
 				ServletUtility.forward("AddPatientView.jsp", request, response);
@@ -48,6 +35,19 @@ public class AddPatientCtl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		PatientBean bean = new PatientBean();
+		PatientModel model = new PatientModel();
+		String id = request.getParameter("id");
+
+		if (id != null) {
+			try {
+				bean = model.findByPk(Integer.parseInt(id));
+				request.setAttribute("bean", bean);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		ServletUtility.forward("AddPatientView.jsp", request, response);
 
 	}
@@ -59,6 +59,8 @@ public class AddPatientCtl extends HttpServlet {
 
 		PatientBean bean = new PatientBean();
 		PatientModel model = new PatientModel();
+		String op = request.getParameter("operation");
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		String patientId = request.getParameter("patientId");
@@ -76,9 +78,15 @@ public class AddPatientCtl extends HttpServlet {
 			bean.setDisease(disease);
 			bean.setDoctorName(doctorName);
 			bean.setAdmissionDate(sdf.parse(admissionDate));
-			model.add(bean);
 
-			request.setAttribute("successMsg", "Patient Added successfully");
+			if (op.equals("save")) {
+				model.add(bean);
+				request.setAttribute("successMsg", "Patient saved successfully");
+			} else if (op.equals("update")) {
+				bean.setId(Integer.parseInt(request.getParameter("id")));
+				model.update(bean);
+				request.setAttribute("successMsg", "Patient updated successfully");
+			}
 
 		} catch (Exception e) {
 			request.setAttribute("errorMsg", "PatientId already exist");
